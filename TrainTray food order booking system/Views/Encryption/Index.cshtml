@@ -1,0 +1,41 @@
+﻿@model TrainTray_food_order_booking_system.Models.EncryptionModel
+@{
+    ViewData["Title"] = "BCrypt Encryption & Verification";
+}
+
+<h2>BCrypt Encryption & Verification</h2>
+
+<!-- Encryption Form -->
+<form asp-action="Encrypt" method="post">
+    <h3>Encrypt Text</h3>
+    <label>Enter Text:</label>
+    <input type="text" asp-for="PlainText" class="form-control" required />
+    <button type="submit" class="btn btn-primary mt-2">Encrypt</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.EncryptedText))
+{
+    <h3 class="mt-3">Encrypted Output:</h3>
+    <input type="text" class="form-control" value="@Model.EncryptedText" readonly />
+}
+
+<hr />
+
+<!-- Verification Form -->
+<form asp-action="Verify" method="post">
+    <h3>Verify Encrypted Text</h3>
+
+    <label>Enter Encrypted Text:</label>
+    <input type="text" asp-for="CheckEncryptedText" class="form-control" required />
+
+    <label>Enter Actual Text:</label>
+    <input type="text" asp-for="CheckPlainText" class="form-control" required />
+
+    <button type="submit" class="btn btn-success mt-2">Verify</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.MatchResult))
+{
+    <h3 class="mt-3">Result:</h3>
+    <label class="form-control">@Model.MatchResult</label>
+}

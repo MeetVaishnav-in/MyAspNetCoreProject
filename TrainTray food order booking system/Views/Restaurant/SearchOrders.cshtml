@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Search Orders";
+}
+
+<h1>Search Orders</h1>
+
+<!-- Search Form -->
+<div class="mb-3">
+    <input type="text" id="searchQuery" class="form-control" placeholder="Enter order details (Customer Name, Train, Status, etc.)">
+</div>
+
+<!-- Results Table -->
+<table class="table" id="ordersTable">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Customer</th>
+            <th>Train</th>
+            <th>Seat No</th>
+            <th>Coach No</th>
+            <th>Platform</th>
+            <th>Station</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody id="ordersTableBody">
+        <!-- Results will be displayed here -->
+    </tbody>
+</table>
+
+<!-- jQuery for AJAX -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchQuery").on("input", function () { // Trigger on every keystroke
+            var query = $(this).val().trim();
+
+            if (query.length < 1) { // Avoid unnecessary API calls
+                $("#ordersTableBody").empty(); // Clear table when empty
+                return;
+            }
+
+            console.log("🔍 Sending AJAX request with query:", query);
+
+            $.ajax({
+                url: '/Restaurant/SearchOrdersJson', // Use correct controller name
+                type: "GET",
+                data: { searchQuery: query },
+                dataType: "json",
+                success: function (data) {
+                    console.log("✅ Received response:", data);
+
+                    var tableBody = $("#ordersTableBody");
+                    tableBody.empty();
+
+                    if (data.length === 0) {
+                        tableBody.append("<tr><td colspan='11' class='text-center'>No results found</td></tr>");
+                    }
+
+                    $.each(data, function (index, order) {
+                        var statusText = order.status === 0 ? "Order Placed" :
+                                         order.status === 1 ? "Pending Delivery" :
+                                         order.status === 2 ? "Completed" : "Unknown";
+
+                        var row = "<tr>" +
+                            "<td>" + order.item + "</td>" +
+                            "<td>" + order.userName + "</td>" +
+                            "<td>" + order.trainName + "</td>" +
+                            "<td>" + order.seatNo + "</td>" +
+                            "<td>" + order.coachNo + "</td>" +
+                            "<td>" + order.platformNo + "</td>" +
+                            "<td>" + order.stationName + "</td>" +
+                            "<td>" + order.price + "</td>" +
+                            "<td>" + order.quantity + "</td>" +
+                            "<td>" + order.orderDate + "</td>" +
+                            "<td>" + statusText + "</td>" +
+                            "<td>" + order.total + "</td>" +
+                            "</tr>";
+
+                        tableBody.append(row);
+                    });
+                },
+                error: function (xhr, status, error) {
+
+                }
+            });
+        });
+    });
+</script>

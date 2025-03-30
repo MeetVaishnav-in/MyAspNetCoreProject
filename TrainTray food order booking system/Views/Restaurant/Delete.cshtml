@@ -1,0 +1,37 @@
+﻿@model TrainTray_food_order_booking_system.Models.TblItem
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TblItem</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Price)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Price)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Description)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.ItemImage)</dt>
+        <dd class="col-sm-10">
+            <img src="@Model.ItemImage" alt="Item Image" style="max-width:150px;" />
+        </dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.ItemStatus)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.ItemStatus)</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="ItemId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Menu" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

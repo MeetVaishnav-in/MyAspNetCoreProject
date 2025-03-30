@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Station Details";
+}
+
+<h2>Station Details</h2>
+
+<style>
+    
+    .station-info {
+        font-family: 'Arial', sans-serif;
+        background: #ffffff;
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+       
+        border-radius: 12px;
+        text-align: left;
+        
+        margin: auto;
+        transition: 0.3s ease-in-out;
+    }
+
+        .station-info:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+    .restaurant-list {
+        margin-top: 20px;
+    }
+
+    .restaurant-item {
+        background: #ffffff;
+        padding: 15px;
+        margin: 12px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+        .restaurant-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .restaurant-item-link {
+            text-decoration: none;
+            color: inherit;
+            align-items: center;
+            
+        }
+
+    .restaurant-logo {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        object-fit: cover;
+        margin-right: 18px;
+    }
+
+    .restaurant-info {
+        flex-grow: 1;
+    }
+
+    h3 {
+        color: #007bff;
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin: 6px 0;
+        font-size: 16px;
+        color: #333;
+    }
+
+</style>
+
+<div class="station-info">
+    <h3>Station: @ViewBag.StationName</h3>
+    <p><strong>Distance:</strong> @ViewBag.Distance</p>
+    <p><strong>Timing:</strong> @ViewBag.Timing</p>
+    <p><strong>Delay:</strong> @ViewBag.Delay</p>
+    <p><strong>Platform:</strong> @ViewBag.Platform</p>
+    <p><strong>Halt:</strong> @ViewBag.Halt</p>
+
+    <h3>Available Restaurants</h3>
+    <a asp-controller="Train" asp-action="AllItems" asp-route-stationId="@ViewBag.StationId" class="btn btn-primary" style="margin-bottom: 15px; display: inline-block;">
+        🍽️ View All Items from All Restaurants
+    </a>
+    
+    @if (ViewBag.Restaurants != null && ViewBag.Restaurants.Count > 0)
+    {
+        <div class="restaurant-list">
+            @foreach (var restaurant in ViewBag.Restaurants)
+            {
+                <div class="restaurant-item">
+                    <a asp-controller="Train" asp-action="ItemDetails" asp-route-restaurantId="@restaurant.RestaurantId" class="restaurant-item-link">
+                        <img src="@restaurant.Logo" alt="Logo" class="restaurant-logo" />
+
+                        <div class="restaurant-info">
+                            <p><strong>Name:</strong> @restaurant.Name</p>
+                            <p><strong>Address:</strong> @restaurant.Address</p>
+                            <p><strong>Status:</strong> @(restaurant.Status == 1 ? "Open" : "Closed")</p>
+                            <p><strong>Rating:</strong></p>
+                            <p>
+                                <a href="https://www.google.com/maps?q=@restaurant.Latitude,@restaurant.Longitude"
+                                   target="_blank" style="color: #007bff; text-decoration: underline; display:contents">📍 View Location
+                                </a>
+                            </p>
+                            
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No restaurants found at this station.</p>
+    }
+</div>

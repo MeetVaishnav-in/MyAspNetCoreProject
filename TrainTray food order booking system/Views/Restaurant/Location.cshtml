@@ -1,0 +1,21 @@
+﻿<h2>@Model.Name's Location</h2>
+
+<!-- Leaflet Map -->
+<div id="map" style="height: 500px;"></div>
+
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    var map = L.map('map').setView([@Model.Latitude, @Model.Longitude], 15); // Center on restaurant location
+
+    // **Base Maps**
+    var streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // **Marker for the Restaurant**
+    var marker = L.marker([@Model.Latitude, @Model.Longitude]).addTo(map)
+        .bindPopup("<b>@Model.Name</b>").openPopup();
+</script>

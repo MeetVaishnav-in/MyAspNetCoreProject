@@ -1,0 +1,141 @@
+﻿@{
+    ViewData["Title"] = "Your Cart";
+}
+
+<h2>Your Cart</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Restaurant</th>
+                <th>Station</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr onclick="openCartPopup('@item.CartId', `@Html.Raw(item.ItemName)`, `@Html.Raw(item.ItemPrice)`, `@Html.Raw(item.RestaurantName)`, `@Html.Raw(item.StationName)`)">
+                    <td>@item.ItemName</td>
+                    <td><img src="@item.ItemImage" alt="@item.ItemName" width="100"></td>
+                    <td>₹@item.ItemPrice</td>
+                    <td>@item.RestaurantName</td>
+                    <td>@item.StationName</td>
+                    <td>@item.Quantity</td>
+                    <td>
+                        <form asp-action="DeleteFromCart" asp-controller="Train" method="post">
+                            <input type="hidden" name="cartId" value="@item.CartId" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Modal for User Input -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Enter Your Travel Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="cartItemId" />
+
+                <p><strong>Item:</strong> <span id="modalCartItemName"></span></p>
+                <p><strong>Price:</strong> ₹<span id="modalCartItemPrice"></span></p>
+                <p><strong>Restaurant:</strong> <span id="modalCartRestaurant"></span></p>
+                <p><strong>Station:</strong> <span id="modalCartStation"></span></p>
+
+                <!-- User Inputs -->
+                <label for="cartSeatNo"><strong>Seat No:</strong></label>
+                <input type="text" id="cartSeatNo" class="form-control" placeholder="Enter Seat No" required>
+
+                <label for="cartCoachNo"><strong>Coach No:</strong></label>
+                <input type="text" id="cartCoachNo" class="form-control" placeholder="Enter Coach No" required>
+
+                <label for="cartPlatform"><strong>Platform:</strong></label>
+                <input type="text" id="cartPlatform" class="form-control" placeholder="Enter Platform No" required>
+
+                <label for="cartArrival"><strong>Train Arrival:</strong></label>
+                <input type="text" id="cartArrival" class="form-control" placeholder="Enter Arrival Time" required>
+
+                <hr>
+
+                <button type="button" class="btn btn-primary" onclick="updateCartItem()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function openCartPopup(cartId, itemName, itemPrice, restaurant, station) {
+        console.log("Opening Cart Popup for Item:", itemName);
+        $("#cartItemId").val(cartId);
+        $("#modalCartItemName").text(decodeURIComponent(itemName));
+        $("#modalCartItemPrice").text(itemPrice);
+        $("#modalCartRestaurant").text(decodeURIComponent(restaurant));
+        $("#modalCartStation").text(decodeURIComponent(station));
+
+        // Clear previous input values
+        $("#cartSeatNo").val("");
+        $("#cartCoachNo").val("");
+        $("#cartPlatform").val("");
+        $("#cartArrival").val("");
+
+        $("#cartModal").modal("show"); // Show the modal
+    }
+
+    function updateCartItem() {
+        var cartId = $("#cartItemId").val();
+        var seatNo = $("#cartSeatNo").val();
+        var coachNo = $("#cartCoachNo").val();
+        var platform = $("#cartPlatform").val();
+        var arrival = $("#cartArrival").val();
+
+        if (!seatNo || !coachNo || !platform || !arrival) {
+            alert("Please enter all details.");
+            return;
+        }
+
+        $.ajax({
+            url: "/Train/UpdateCartItem",
+            type: "POST",
+            data: {
+                cartId: cartId,
+                seatNo: seatNo,
+                coachNo: coachNo,
+                platform: platform,
+                arrival: arrival
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert("Cart item updated successfully!");
+                    $("#cartModal").modal("hide");
+                    location.reload();
+                } else {
+                    alert("Error: " + response.message);
+                }
+            },
+            error: function () {
+                alert("Error updating cart item.");
+            }
+        });
+    }
+</script>

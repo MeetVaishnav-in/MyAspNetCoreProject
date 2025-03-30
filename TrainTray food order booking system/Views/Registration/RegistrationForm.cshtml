@@ -1,0 +1,82 @@
+﻿@model TrainTray_food_order_booking_system.Models.User
+
+@{
+    ViewData["Title"] = "User Registration";
+}
+
+<h2>User Registration</h2>
+
+<form method="post" id="registrationForm" novalidate>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Full Name</label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Mobile" class="form-label">Mobile Number</label>
+        <input asp-for="Mobile" class="form-control" required pattern="^[6789][0-9]{9}$"
+               title="Enter a valid 10-digit mobile number starting with 6, 7, 8, or 9" maxlength="10"
+               oninput="this.setCustomValidity('')" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+    <input asp-for="Email" type="email" class="form-control" required 
+           
+            />
+    <span asp-validation-for="Email" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control" required maxlength="8" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label">User Type</label>
+        <select asp-for="Type" class="form-select" required>
+            <option value="">Select User Type</option>
+            <option value="0">Customer</option>
+            <option value="1">Owner</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send OTP</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        (function() {
+            let form = document.getElementById("registrationForm");
+
+            form.addEventListener("submit", function(event) {
+                let mobileInput = document.querySelector("input[asp-for='Mobile']");
+                let mobilePattern = /^[6789][0-9]{9}$/;
+
+                if (!mobilePattern.test(mobileInput.value)) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    mobileInput.setCustomValidity("Enter a valid 10-digit mobile number starting with 6, 7, 8, or 9");
+                } else {
+                    mobileInput.setCustomValidity("");
+                }
+
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add("was-validated");
+            });
+        })();
+    </script>
+}

@@ -1,0 +1,81 @@
+﻿@{
+    var userRole = Context.Session.GetString("UserType") ?? "";
+    var restaurantIdString = Context.Session.GetString("RestaurantId");
+    var Resturant = restaurantIdString != null ? int.Parse(restaurantIdString) : 0;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TrainTray_food_order_booking_system</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TrainTray_food_order_booking_system.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TrainTray_food_order_booking_system</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    @if (userRole == "1" && Resturant>0) // Only show for restaurant owners
+                    {
+                        
+                        <ul class="navbar-nav flex-grow-1">
+                            <li><a asp-controller="Restaurant" asp-action="Menu" class="nav-link text-dark">Menu</a></li>
+                            <li><a asp-controller="Restaurant" asp-action="Location" class="nav-link text-dark">Location</a></li>
+                            <li><a asp-controller="Restaurant" asp-action="Orders" class="nav-link text-dark">Orders</a></li>
+                            <li><a asp-controller="Restaurant" asp-action="SearchOrders" class="nav-link text-dark">Order Search</a></li>
+                            <li><a asp-controller="Restaurant" asp-action="Reviews" class="nav-link text-dark">Reviews</a></li>
+                            <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link text-dark">Profile</a></li>
+                        </ul>
+                    }else if(userRole=="0"){
+                        <ul class="navbar-nav flex-grow-1">
+                            <li><a asp-controller="Train" asp-action="Cart" class="nav-link text-dark">Cart</a></li>
+                            <li><a asp-controller="Home" asp-action="Dashboard" class="nav-link text-dark">Profile</a></li>
+                            
+                        </ul>
+                    }
+                    else{
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="RegistrationForm">Registration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ContactUs" asp-action="ContactUs">ContactUs</a>
+                            </li>
+                        </ul>
+                    }
+                    
+                   
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - TrainTray_food_order_booking_system - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

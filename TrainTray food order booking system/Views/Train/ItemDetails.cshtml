@@ -1,0 +1,426 @@
+﻿@{
+	ViewData["Title"] = "Restaurant Menu";
+}
+
+<h2>Menu of @ViewBag.Restaurant.Name</h2>
+
+<style>
+	.menu-container {
+		font-family: Arial, sans-serif;
+		background: #fff;
+		padding: 25px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		border-radius: 12px;
+		text-align: left;
+		margin: auto;
+		transition: 0.3s ease-in-out;
+	}
+
+		.menu-container:hover {
+			box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+		}
+
+	.menu-item {
+		background: #ffffff;
+		padding: 15px;
+		margin: 12px 0;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		display: flex;
+		align-items: center;
+		transition: transform 0.2s, box-shadow 0.3s;
+	}
+
+		.menu-item:hover {
+			transform: scale(1.02);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+		}
+
+		.menu-item img {
+			width: 120px;
+			height: 120px;
+			border-radius: 10px;
+			object-fit: cover;
+			margin-right: 18px;
+		}
+
+	.menu-info {
+		flex-grow: 1;
+	}
+
+	h3 {
+		color: #007bff;
+		margin-bottom: 8px;
+	}
+
+	p {
+		margin: 6px 0;
+		font-size: 16px;
+		color: #333;
+	}
+
+	.btn {
+		display: inline-block;
+		padding: 10px 15px;
+		text-decoration: none;
+		border-radius: 5px;
+		transition: background 0.3s ease-in-out;
+	}
+
+	.btn-primary {
+		background: #007bff;
+		color: #fff;
+		border: none;
+	}
+
+		.btn-primary:hover {
+			background: #0056b3;
+		}
+
+	.btn-secondary {
+		background: #28a745;
+		color: #fff;
+		border: none;
+	}
+
+		.btn-secondary:hover {
+			background: #218838;
+		}
+
+	.btn-back {
+		background: #6c757d;
+		color: #fff;
+		border: none;
+	}
+
+		.btn-back:hover {
+			background: #545b62;
+		}
+
+	.restaurant-name {
+		font-weight: bold;
+		font-size: 18px;
+		color: #d9534f;
+		margin-bottom: 5px;
+	}
+</style>
+
+<!-- Modal for Item Details -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="orderModalLabel">Order Item</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- Hidden fields to store selected item details -->
+				<input type="hidden" id="orderItemId" />
+
+				<p><strong>Restaurant:</strong> <span id="modalRestaurant"></span></p>
+				<p><strong>Station:</strong> <span id="modalStation"></span></p>
+				<p><strong>Platform:</strong> <span id="modalPlatform"></span></p>
+				<p><strong>Train Arrival:</strong> <span id="modalArrival"></span></p>
+
+				@* <p><strong>Restaurant:</strong> <span id="modalRestaurant" data-restaurant-id="@ViewBag.Restaurant.Id">@ViewBag.Restaurant.RName</span></p> *@
+				@* <p><strong>Station:</strong> <span id="modalStation" data-station-id="@ViewBag.Restaurant.Station.Id">@ViewBag.Restaurant.Station.Name</span></p> *@
+				@* <p><strong>Platform:</strong> <span id="modalPlatform">@TempData["Platform"]</span></p> *@
+				@* <p><strong>Train Arrival:</strong> <span id="modalArrival">@TempData["Timing"]</span></p> *@
+
+				<hr>
+
+				<p><strong>Item:</strong> <span id="modalItemName"></span></p>
+				<p><strong>Price:</strong> ₹<span id="modalItemPrice"></span></p>
+				<p><strong>Description:</strong> <span id="modalItemDescription"></span></p>
+
+				<label for="seatNo"><strong>Seat No:</strong></label>
+				<input type="text" id="seatNo" class="form-control" placeholder="Enter Seat No" required>
+
+				<label for="coachNo"><strong>Coach No:</strong></label>
+				<input type="text" id="coachNo" class="form-control" placeholder="Enter Coach No" required>
+
+				<label for="quantity"><strong>Quantity:</strong></label>
+				<input type="number" id="quantity" class="form-control" value="1" min="1">
+
+
+				<input type="hidden" id="customerName" class="form-control" readonly>
+
+				<input type="hidden" id="customerEmail" class="form-control" readonly>
+
+				<input type="hidden" id="customerContact" class="form-control" readonly>
+				@* <input type="hidden" id="customerName" value="@ViewBag.CustomerName"> *@
+				@* <input type="hidden" id="customerEmail" value="@ViewBag.CustomerEmail"> *@
+				@* <input type="hidden" id="customerContact" value="@ViewBag.CustomerContact"> *@
+
+				<hr>
+
+				<button type="button" class="btn btn-success" onclick="buyNow()">Buy Now</button>
+				<button type="button" class="btn btn-primary" onclick="addToCart()">Add to Cart</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="menu-container">
+	<h3>Restaurant: @ViewBag.Restaurant.Name</h3>
+	<p><strong>Address:</strong> @ViewBag.Restaurant.Address</p>
+
+	<h3>Available Items</h3>
+
+	@if (ViewBag.Items != null && ViewBag.Items.Count > 0)
+	{
+		<div class="menu-list">
+			@foreach (var item in ViewBag.Items)
+			{
+				<div class="menu-item" onclick="openOrderPopup('@item.ItemId', `@Html.Raw(item.Name)`, `@Html.Raw(item.Price)`, `@Html.Raw(item.Description)`, `@Html.Raw(ViewBag.Restaurant.Name)`, `@Html.Raw(ViewBag.Restaurant.Station.Name)`, `@Html.Raw(@TempData["Platform"])`, `@Html.Raw(@TempData["Timing"])`, `@Html.Raw(ViewBag.CustomerName)`, `@Html.Raw(ViewBag.CustomerEmail)`, `@Html.Raw(ViewBag.CustomerContact)`)">
+					<img src="@item.ItemImage" alt="Item Image" />
+
+					<div class="menu-info">
+						<p><strong>Name:</strong> @item.Name</p>
+						<p><strong>Price:</strong> ₹@item.Price</p>
+						<p><strong>Description:</strong> @item.Description</p>
+						<p><strong>Status:</strong> @(item.ItemStatus ? "Available" : "Out of Stock")</p>
+					</div>
+				</div>
+			}
+		</div>
+	}
+	else
+	{
+		<p>No items found for this restaurant.</p>
+	}
+
+	@* <h3>Restaurant: @ViewBag.Restaurant.RName</h3> *@
+	@* <p><strong>Address:</strong> @ViewBag.Restaurant.Address</p> *@
+
+	@* <h3>Available Items</h3> *@
+
+	@* @if (ViewBag.Items != null && ViewBag.Items.Count > 0) *@
+	@* { *@
+	@* 	<div class="menu-list"> *@
+	@* 		@foreach (var item in ViewBag.Items) *@
+	@* 		{ *@
+	@* 			<div class="menu-item" onclick="openOrderPopup('@item.ItemId', `@Html.Raw(item.Name)`, `@Html.Raw(item.Price)`, `@Html.Raw(item.Description)`, `@Html.Raw(ViewBag.Restaurant.RName)`, `@Html.Raw(ViewBag.Restaurant.Station.Name)`, `@Html.Raw(@TempData["Platform"])`, `@Html.Raw(@TempData["Timing"])`)"> *@
+	@* 				<img src="@item.ItemImage" alt="Item Image" /> *@
+
+	@* 				<div class="menu-info"> *@
+	@* 					<p><strong>Name:</strong> @item.Name</p> *@
+	@* 					<p><strong>Price:</strong> ₹@item.Price</p> *@
+	@* 					<p><strong>Description:</strong> @item.Description</p> *@
+	@* 					<p><strong>Status:</strong> @(item.ItemStatus ? "Available" : "Out of Stock")</p> *@
+	@* 				</div> *@
+	@* 			</div> *@
+	@* 		} *@
+	@* 	</div> *@
+
+	@* } *@
+	@* else *@
+	@* { *@
+	@* 	<p>No items found for this restaurant.</p> *@
+	@* } *@
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+	$(document).ready(function () {
+		console.log("Document is ready!");
+
+		// Open Order Modal
+		   window.openOrderPopup = function (itemId, itemName, itemPrice, itemDescription, restaurant, station, platform, arrivalTime, customerName, customerEmail, customerContact) {
+		console.log("Opening Order Popup for Item:", itemName);
+		console.log("Debug: Platform=", platform, "Timing=", arrivalTime);
+		$("#orderItemId").val(itemId);
+		$("#modalItemName").text(decodeURIComponent(itemName));
+		$("#modalItemPrice").text(itemPrice);
+		$("#modalItemDescription").text(decodeURIComponent(itemDescription));
+		$("#modalRestaurant").text(decodeURIComponent(restaurant));
+		$("#modalStation").text(decodeURIComponent(station));
+		$("#modalPlatform").text(platform);
+		$("#modalArrival").text(arrivalTime);
+
+		$("#customerName").val(customerName);
+		$("#customerEmail").val(customerEmail);
+		$("#customerContact").val(customerContact);
+		$("#orderModal").modal("show"); // Show the modal
+	};
+
+
+		// Buy Now Button Click
+		$("#orderModal").on("click", ".btn-success", function () {
+			buyNow();
+		});
+
+		// Add to Cart Button Click
+		$("#orderModal").on("click", ".btn-primary", function () {
+			addToCart();
+		});
+
+
+			function buyNow() {
+		var itemId = $("#orderItemId").val();
+		var seatNo = $("#seatNo").val();
+		var coachNo = $("#coachNo").val();
+		var quantity = $("#quantity").val();
+		var amount = parseFloat($("#modalItemPrice").text()) * quantity;
+		var restaurantName = $("#modalRestaurant").text();
+		var station = $("#modalStation").text();
+		var platform = $("#modalPlatform").text();
+		var arrivalTime = $("#modalArrival").text();
+		var customerName = $("#customerName").val();
+		var customerEmail = $("#customerEmail").val();
+		var customerContact = $("#customerContact").val();
+
+		if (!seatNo || !coachNo || quantity <= 0) {
+			alert("Please enter valid details.");
+			return;
+		}
+
+		$.ajax({
+			url: "/Payment/CreateOrder",
+			type: "POST",
+			data: { amount: amount, customerName: customerName, customerEmail: customerEmail, customerContact: customerContact },
+			success: function (response) {
+				var order = JSON.parse(response);
+
+				var options = {
+					"key": "rzp_test_DTod4Yz00SpEl7",
+					"amount": order.amount,
+					"currency": "INR",
+					"name": restaurantName,
+					"description": "Purchase Order",
+					"order_id": order.id,
+					"handler": function (response) {
+						alert("Payment Successful!");
+
+						// Send order details to the server
+						$.ajax({
+							url: "/Payment/SaveOrder",
+							type: "POST",
+							data: {
+								itemId: itemId,
+								seatNo: seatNo,
+								coachNo: coachNo,
+								quantity: quantity,
+								amount: amount,
+								restaurantName: restaurantName,
+								station: station,
+								platform: platform,
+								arrivalTime: arrivalTime,
+								customerName: customerName,
+								customerEmail: customerEmail,
+								customerContact: customerContact,
+								paymentId: response.razorpay_payment_id
+							},
+							success: function (saveResponse) {
+								alert("Order placed successfully!");
+								$("#orderModal").modal("hide");
+							},
+							error: function (xhr) {
+								alert("Error saving order: " + xhr.responseText);
+							}
+						});
+					},
+					"prefill": {
+						"name": customerName,
+						"email": customerEmail,
+						"contact": customerContact
+					},
+					"theme": {
+						"color": "#007bff"
+					}
+				};
+
+				var rzp = new Razorpay(options);
+				rzp.open();
+			},
+			error: function (xhr) {
+				alert("Error: " + xhr.responseText);
+			}
+		});
+	}
+
+
+
+
+
+
+
+			function addToCart() {
+		var newItemStation = $("#modalStation").text();
+		var itemId = $("#orderItemId").val();
+		var seatNo = $("#seatNo").val();
+		var coachNo = $("#coachNo").val();
+		var quantity = $("#quantity").val();
+
+		if (!seatNo || !coachNo || quantity <= 0) {
+			alert("Please enter valid details.");
+			return;
+		}
+
+		// First, check the cart items
+		$.ajax({
+			url: "/Train/GetCartItems",
+			type: "GET",
+			success: function (response) {
+				if (response.items.length > 0) {
+					var existingStation = response.items[0].station; // Assuming all cart items are from the same station
+
+					if (existingStation !== newItemStation) {
+						if (confirm("Your cart contains items from a different station. Do you want to clear the cart before adding this item?")) {
+							// Clear the cart before adding the new item
+							$.ajax({
+								url: "/Train/ClearCart",
+								type: "POST",
+								success: function () {
+									addItemToCart(itemId, seatNo, coachNo, quantity);
+								},
+								error: function () {
+									alert("Error clearing the cart.");
+								}
+							});
+						}
+					} else {
+						addItemToCart(itemId, seatNo, coachNo, quantity);
+					}
+				} else {
+					addItemToCart(itemId, seatNo, coachNo, quantity);
+				}
+			},
+			error: function () {
+				alert("Error checking cart items.");
+			}
+		});
+	}
+
+	// Function to add the item to the cart
+	function addItemToCart(itemId, seatNo, coachNo, quantity) {
+		$.ajax({
+			url: "/Train/AddToCart",
+			type: "POST",
+			data: {
+				itemId: itemId,
+				seatNo: seatNo,
+				coachNo: coachNo,
+				quantity: quantity
+			},
+			success: function (response) {
+				if (response.success) {
+					alert("Item added to cart!");
+					$("#orderModal").modal("hide");
+				} else {
+					alert("Error: " + response.message);
+				}
+			},
+			error: function () {
+				alert("Error adding to cart.");
+			}
+		});
+	}
+
+
+	});
+</script>
+

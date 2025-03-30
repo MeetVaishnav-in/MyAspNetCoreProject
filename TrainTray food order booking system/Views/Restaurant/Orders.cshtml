@@ -1,0 +1,195 @@
+﻿@model IEnumerable<TrainTray_food_order_booking_system.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+<!-- jQuery (required for AJAX) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS (required for modals) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<h1>Orders</h1>
+
+
+<!-- Filter Buttons -->
+<div class="btn-group mb-3">
+
+    <a asp-action="OrdersTodayByStatus" asp-route-status="0" class="btn btn-warning">Today's Order Placed</a>
+    <a asp-action="OrdersTodayByStatus" asp-route-status="1" class="btn btn-info">Today's Order Delivering</a>
+    <a asp-action="OrdersTodayByStatus" asp-route-status="2" class="btn btn-success">Today's Completed</a>
+    <a asp-action="AllOrdersToday" class="btn btn-secondary">Today's All Orders</a>
+
+</div>
+
+<div class="btn-group mb-3">
+    <a asp-action="OrdersByStatus" asp-route-status="0" class="btn btn-warning">All Order Placed</a>
+    <a asp-action="OrdersByStatus" asp-route-status="1" class="btn btn-info">All Order Delivering</a>
+    <a asp-action="OrdersByStatus" asp-route-status="2" class="btn btn-success">All Completed</a>
+    <a asp-action="AllOrders" class="btn btn-secondary">All Orders</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Item)</th>
+            <th>Customer</th>
+            <th>@Html.DisplayNameFor(model => model.SeatNo)</th>
+            <th>@Html.DisplayNameFor(model => model.CoachNo)</th>
+            <th>Platform</th>
+            <th>@Html.DisplayNameFor(model => model.User.Mobile)</th>
+            <th>Train</th>
+            <th>@Html.DisplayNameFor(model => model.Station)</th>
+            <th>Price</th>
+            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+            <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ArrivalTime)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.User.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SeatNo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CoachNo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PlatformNo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.User.Mobile)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TrainName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Station.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ArrivalTime)</td>
+                    <td>
+                    @{
+                        string statusText = item.Status switch
+                        {
+                            0 => "Order Placed",
+                            1 => "Pending Delivery",
+                            2 => "Completed",
+                            _ => "Unknown"
+                        };
+                    }
+
+
+
+                    @if (item.Status < 1) // Show button only if status is not "Completed"
+                    {
+                                <form asp-action="UpdateStatus" asp-route-id="@item.OrderId" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-primary"> @statusText</button>
+                                </form>
+                    }
+                    else if (item.Status == 1)
+                    {
+                                <form  style="display:inline;">
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="updateOrderStatus(@item.OrderId)">
+                                @statusText
+                                </button>
+                                </form>
+                    }
+                    else if (item.Status == 2) // Show button only if status is not "Completed"
+                    {
+                                <form  style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-primary" disabled> @statusText</button>
+                                </form>
+                    }
+                    else
+                    {
+                                <form asp-action="UpdateStatus" asp-route-id="@item.OrderId" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-primary"> @statusText</button>
+                                </form>
+                    }
+
+                    </td>
+                    <!-- OTP Modal -->
+
+                    <td>@Html.DisplayFor(modelItem => item.Total)</td>
+                </tr>
+        }
+    </tbody>
+</table>
+<!-- OTP Modal (Move this OUTSIDE the foreach loop) -->
+<div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="otpModalLabel">Verify OTP</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="orderId" />
+                <p>Enter the OTP sent to your registered email:</p>
+                <input type="text" id="otpInput" class="form-control" placeholder="Enter OTP" required />
+                <span id="otpError" class="text-danger"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="verifyOtp()">Submit OTP</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                            <script>
+                                           function updateOrderStatus(orderId) {
+        console.log("updateOrderStatus called with orderId:", orderId);
+
+        fetch('/Restaurant/UpdateStatus/' + orderId, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+
+                    showOtpPopup(orderId);
+
+            } else {
+                alert("Failed to update order status. Please try again.");
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function showOtpPopup(orderId) {
+        console.log("showOtpPopup called with orderId:", orderId);
+
+        $("#orderId").val(orderId);
+        $("#otpModal").modal("show");
+
+        console.log("Modal should be visible now.");
+    }
+
+
+    function verifyOtp() {
+        var orderId = $("#orderId").val();
+        var otp = $("#otpInput").val().trim();
+
+        if (!otp) {
+            alert("Please enter the OTP.");
+            return;
+        }
+
+        $.ajax({
+            url: '/Restaurant/VerifyOtp',
+            type: 'POST',
+            data: { orderId: orderId, otpInput: otp },
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                    location.reload(); // Refresh page
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function () {
+                alert("Error verifying OTP.");
+            }
+        });
+    }
+
+                            </script>

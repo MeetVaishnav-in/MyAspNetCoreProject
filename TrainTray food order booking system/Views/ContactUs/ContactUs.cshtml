@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<body>
+
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <form method="POST" id="form" class="contact-container">
+            <input type="hidden" name="access_key" value="c4033f86-2a0e-48d4-ab44-873a78398f1d">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" name="name" class="form-control"  required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" id="email" name="email" class="form-control"  required>
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="form-label">Your Suggestion</label>
+                <textarea id="message" name="message" class="form-control"  required></textarea>
+            </div>
+
+            <input type="checkbox" name="botcheck" class="d-none"> <!-- Hidden field -->
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div id="result" class="mt-3 text-success text-center"></div>
+        </form>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+        const result = document.getElementById('result');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            result.innerHTML = "Please wait...";
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = "Form submitted successfully!";
+                    result.style.color = "green";
+                } else {
+                    console.log(response);
+                    result.innerHTML = json.message;
+                    result.style.color = "red";
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = "Something went wrong!";
+                result.style.color = "red";
+            })
+            .then(function() {
+                form.reset();
+                setTimeout(() => {
+                    result.style.display = "none";
+                }, 3000);
+            });
+        });
+    </script>
+
+</body>
+</html>

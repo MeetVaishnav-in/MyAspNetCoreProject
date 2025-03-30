@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TrainTray_food_order_booking_system.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "AdminPage";
+}
+
+<h1>AdminPage</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1>AdminPage</h1>
+    <a href="@Url.Action("Logout", "Login")" class="btn btn-danger">Logout</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Station)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Logo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Station.StationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RestaurantId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RestaurantId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RestaurantId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

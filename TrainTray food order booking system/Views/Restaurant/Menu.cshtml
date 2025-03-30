@@ -1,0 +1,41 @@
+﻿@model List<TrainTray_food_order_booking_system.Models.TblItem>
+
+<h2>Restaurant Menu</h2>
+
+<a href="@Url.Action("Create")" class="btn btn-success">Add New Item</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.Description</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ItemImage))
+                    {
+                        <img src="@item.ItemImage" alt="Item Image" style="width: 50px; height: 50px;" />
+                    }
+                </td>
+                <td>@(item.ItemStatus ? "Available" : "Unavailable")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.ItemId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = item.ItemId })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

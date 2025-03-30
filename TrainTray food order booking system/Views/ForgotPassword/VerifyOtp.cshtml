@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Verify OTP";
+}
+
+<h2>Verify OTP</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<form method="post" id="otpForm">
+    <div class="mb-3">
+        <label class="form-label">Enter OTP</label>
+        <input name="otp" class="form-control" required />
+    </div>
+
+    <!-- Google reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6Lfrq88qAAAAAI9FATp8VvH0SCnAMwPGSN9OSk6q"></div>
+
+    <input type="hidden" id="gRecaptchaResponse" name="gRecaptchaResponse" />
+
+    <button type="submit" class="btn btn-success">Verify</button>
+</form>
+
+<!-- Resend OTP Form -->
+<form method="post" asp-action="ResendOtp" class="d-inline">
+    <input type="hidden" name="email" value="@ViewBag.Email" />
+    Didn't get the OTP?
+    <button type="submit" class="btn btn-link" style="color:blue;">Resend OTP</button>
+</form>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    document.getElementById("otpForm").addEventListener("submit", function(event) {
+        let recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            event.preventDefault();
+            alert("Please complete the reCAPTCHA before verifying OTP.");
+        } else {
+            document.getElementById("gRecaptchaResponse").value = recaptchaResponse;
+        }
+    });
+</script>

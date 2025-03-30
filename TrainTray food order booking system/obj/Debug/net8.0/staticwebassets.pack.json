@@ -1,0 +1,345 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TrainTray food order booking system.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TrainTray food order booking system.am4rdfw4pp.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\2db8c2b8-12f2-40c0-bd9b-710489456ecb.png",
+      "PackagePath": "staticwebassets\\uploads\\2db8c2b8-12f2-40c0-bd9b-710489456ecb.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\3696c00c-b558-4750-9a8b-8d0bb067dbac.png",
+      "PackagePath": "staticwebassets\\uploads\\3696c00c-b558-4750-9a8b-8d0bb067dbac.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\43bcfdab-9755-4853-b6bd-5609e2ba1818.png",
+      "PackagePath": "staticwebassets\\uploads\\43bcfdab-9755-4853-b6bd-5609e2ba1818.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\4649c7b7-b6f9-47e8-b7d9-930ba963f727.png",
+      "PackagePath": "staticwebassets\\uploads\\4649c7b7-b6f9-47e8-b7d9-930ba963f727.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\56ca397a-53b5-44ad-be0d-e37620757e4f.png",
+      "PackagePath": "staticwebassets\\uploads\\56ca397a-53b5-44ad-be0d-e37620757e4f.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\6579d881-70f5-46c5-b75f-61a437c7640f.pdf",
+      "PackagePath": "staticwebassets\\uploads\\6579d881-70f5-46c5-b75f-61a437c7640f.pdf"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\845f390d-2aa5-41f0-9936-2509cb6f7d39.png",
+      "PackagePath": "staticwebassets\\uploads\\845f390d-2aa5-41f0-9936-2509cb6f7d39.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\9b7a7690-8774-4e2d-a6be-aeb522ec199b.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\9b7a7690-8774-4e2d-a6be-aeb522ec199b.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\Item1.png",
+      "PackagePath": "staticwebassets\\uploads\\Item1.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\Item2.png",
+      "PackagePath": "staticwebassets\\uploads\\Item2.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\Item3.png",
+      "PackagePath": "staticwebassets\\uploads\\Item3.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\Item4.png",
+      "PackagePath": "staticwebassets\\uploads\\Item4.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\a3f58e4f-569e-4db7-9055-192f7cc5540f.png",
+      "PackagePath": "staticwebassets\\uploads\\a3f58e4f-569e-4db7-9055-192f7cc5540f.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\aca818ae-244f-4506-be6d-15f162e7c517.png",
+      "PackagePath": "staticwebassets\\uploads\\aca818ae-244f-4506-be6d-15f162e7c517.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\c2a43802-6dee-4b56-a2b5-54095b200a16.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\c2a43802-6dee-4b56-a2b5-54095b200a16.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\d3cc266e-1b6c-4e80-9c4b-aef226fbde00.png",
+      "PackagePath": "staticwebassets\\uploads\\d3cc266e-1b6c-4e80-9c4b-aef226fbde00.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\d96f289f-056a-44a7-8a94-f2de1f4523e6.png",
+      "PackagePath": "staticwebassets\\uploads\\d96f289f-056a-44a7-8a94-f2de1f4523e6.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\default-logo.png",
+      "PackagePath": "staticwebassets\\uploads\\default-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\01\\source\\repos\\TrainTray food order booking system\\TrainTray food order booking system\\wwwroot\\uploads\\f771c4e1-0673-420e-905c-d2ff2e552a6d.png",
+      "PackagePath": "staticwebassets\\uploads\\f771c4e1-0673-420e-905c-d2ff2e552a6d.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TrainTray food order booking system.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TrainTray food order booking system.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TrainTray food order booking system.props",
+      "PackagePath": "build\\TrainTray food order booking system.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TrainTray food order booking system.props",
+      "PackagePath": "buildMultiTargeting\\TrainTray food order booking system.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TrainTray food order booking system.props",
+      "PackagePath": "buildTransitive\\TrainTray food order booking system.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
