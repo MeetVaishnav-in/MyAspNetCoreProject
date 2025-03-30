@@ -3,9 +3,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
 # Copy only the project file(s) and restore dependencies
-COPY "TrainTray food order booking system/*.csproj" "./TrainTray food order booking system/"
-WORKDIR "/app/TrainTray food order booking system"
-RUN dotnet restore
+COPY TrainTray\ food\ order\ booking\ system/*.csproj ./TrainTray\ food\ order\ booking\ system/
+WORKDIR /app/TrainTray\ food\ order\ booking\ system
+
 
 # Copy the rest of the application and build it
 COPY . ./
